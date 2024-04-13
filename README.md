@@ -7,10 +7,26 @@ Police Performance and Management system
 <h3>Ayush Singh</h3>
 <h1>Prototype Phase</h1>
 for prototype we have used a small part of the dataset provided by Hack2Skill.
-# Some Features of the prototype
+<h2>Some Features of the prototype</h2>
 <ul>
 <li>Complaint Filling</li>
 <li>Crime analysis region wise</li>
 <li>Managing Staff and Criminals</li>
 <li>Online Emergency Navigation and location sharing system</li>
+</ul>
+<hr>
+<h2>Tech stacks used</h2>
+<ul>
+  <li>
+    Python
+    <ul>
+      <li>Flask</li>
+      <li>Pillow Module</li>
+    </ul>
+  </li>
+  <li>SQLITE-3</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+  <li>Chart JS</li>
 </ul>
