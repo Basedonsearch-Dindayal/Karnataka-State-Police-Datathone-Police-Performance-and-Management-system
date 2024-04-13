@@ -8,7 +8,9 @@ Police Performance and Management system
 <h1>Prototype Phase</h1>
 for prototype we have used a small part of the dataset provided by Hack2Skill.
 # Some Features of the prototype
-* Complaint Filling
-* Crime analysis region wise
-* Managing Staff and Criminals
-* Online Emergency Navigation and location sharing system
+<ul>
+<li>Complaint Filling</li>
+<li>Crime analysis region wise</li>
+<li>Managing Staff and Criminals</li>
+<li>Online Emergency Navigation and location sharing system</li>
+</ul>
