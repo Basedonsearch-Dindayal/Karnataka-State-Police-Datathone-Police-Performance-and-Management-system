@@ -146,7 +146,7 @@
 <script>
     var dist = {{ district | tojson }};
     var dist_mod = {{ district_mod | tojson }};
-    let income_vs_expense_chart = new Chart(graph1, {
+    let graph1_chart = new Chart(graph1, {
       type: 'pie',
       data: {
       labels: dist,
