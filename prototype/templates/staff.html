@@ -1,0 +1,78 @@
+{% extends 'dashboard.html'%} {%block body%}
+<div class='flashmessage pt-3'>
+  {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category,message in messages %}
+        <div style="color:red;"class='alert alert-{{category}}'>{{message}}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+<form action="/staff/{{username}}" method="post">
+  <input type="text" placeholder="search" name="query">
+</form>
+<div class="table">
+<table>
+  <thead class="tablehead">
+    <tr class = "staffhead">
+      <td>Id</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Age</td>
+      <td>Gender</td>
+      <td>DOB</td>
+      <td>Joining date</td>
+      <td>Branch</td>
+      <td>Designation</td>
+      <td>Scenario</td>
+      <td>Image</td>
+      <td>Address</td>
+      <td>Update</td>
+    </tr>
+  </thead>
+
+  <tbody class="tablebody">
+    {% for item in data%}
+    <tr>
+      <td>{{item[0]}}</td>
+      <td>{{item[1]}}</td>
+      <!-- <td>{{item[2]}}</td> -->
+      <td>{{item[3]}}</td>
+      <td>{{item[4]}}</td>
+      <td>{{item[5]}}</td>
+      <td>{{item[6]}}</td>
+      <td>{{item[7]}}</td>
+      <td>{{item[8]}}</td>
+      <td>{{item[9]}}</td>
+      <td>{{item[10]}}</td>
+      <td>{{item[11]}}</td>
+      <td><img class="myImg" src="{{ url_for('serve_uploaded_image', filename=item[12]) }}"
+        alt="" loading="lazy"></td>
+        <div class="myModal modal" style="display: none; position: fixed; z-index: 1; padding-top: 10%; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.6);">
+          <!-- Modal content -->
+          <div class="modal-content" style="margin: auto; display: block; width:400px; max-width:400px; max-height:400px; overflow: auto;background-color:rgba(221, 251, 210, 0.8);">
+            <span class="close" style="color:#6495ed; float:right; font-size: 4vw; font-weight: bold;">&times;</span>
+            <img class="modal-content imgModal" id="img{{item[7]}}" style=" width: 300px;height: 300px;object-fit: contain;">
+          </div>
+        </div>
+        
+      <td>{{item[13]}}</td>
+      <td>
+        <a data-toggle="modal" data-target="#staffupdate{{item[0]}}"
+          ><button
+            class="btn"
+            onclick="openForm(event)"
+            data-form-id="adminupdate{{item[0]}}"
+          >
+            Update<i class="fa fa-refresh"></i></button
+        ></a>
+      </td>
+
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+</table>
+{%endblock%}
