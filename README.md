@@ -30,3 +30,12 @@ for prototype we have used a small part of the dataset provided by Hack2Skill.
   <li>Javascript</li>
   <li>Chart JS</li>
 </ul>
+<hr>
+<h1>Dummy Cridentials to log in</h1>
+<h2>Staff cridential</h2>
+<p>Username:= 1999ksp01</p>
+<p>Password:= 123456</p>
+<h2>Public cridentials</h2>
+<p>Username:= 555619191234</p>
+<p>Password:= hello</p>
+<hr>
