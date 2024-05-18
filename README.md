@@ -1,4 +1,4 @@
-![Screenshot 2024-05-19 003840](https://github.com/Balaji-Nirmit/Karnataka-State-Police-Datathone-Police-Performance-and-Management-system/assets/132046259/16ea52bd-0237-4423-bd46-691694234103)![Screenshot 2024-05-19 003740](https://github.com/Balaji-Nirmit/Karnataka-State-Police-Datathone-Police-Performance-and-Management-system/assets/132046259/1b779b68-d6a8-4b66-a091-f7a8e7f85dce)# Karnataka-State-Police-Datathone-Police-Performance-and-Management-system
+# Karnataka-State-Police-Datathone-Police-Performance-and-Management-system
 Police Performance and Management system 
 # Team
 <h3>Nirmit Pratap Singh</h3>
@@ -45,7 +45,14 @@ for prototype we have used a small part of the dataset provided by Hack2Skill.
 ![Screenshot 2024-05-19 004049](https://github.com/Balaji-Nirmit/Karnataka-State-Police-Datathone-Police-Performance-and-Management-system/assets/132046259/83357008-04ec-43c1-92aa-c53f0fa0243f)
 
  <br>
+
+ ![Screenshot 2024-05-19 003840](https://github.com/Balaji-Nirmit/Karnataka-State-Police-Datathone-Police-Performance-and-Management-system/assets/132046259/16ea52bd-0237-4423-bd46-691694234103)
  
+ <br>
+ 
+ ![Screenshot 2024-05-19 003740](https://github.com/Balaji-Nirmit/Karnataka-State-Police-Datathone-Police-Performance-and-Management-system/assets/132046259/1b779b68-d6a8-4b66-a091-f7a8e7f85dce)
+
+ <br>
 <hr>
 <h2>Tech stacks used</h2>
 <ul>
