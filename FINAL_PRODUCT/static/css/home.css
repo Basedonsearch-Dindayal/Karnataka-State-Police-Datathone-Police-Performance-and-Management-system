@@ -1,0 +1,37 @@
+.profile{
+  width: 60vw;
+}
+
+/* Styles for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Styles for the profile picture container */
+.profile-container {
+  float: right;
+  margin: 10px;
+  width: 218px;
+  height: 238px;
+  border: 3px dotted #04AA6D;
+  border-radius: 10%;
+}
+
+/* Adjust image size and styles as needed */
+.profile-picture {
+  width: 210px;
+  height: 230px;
+  object-fit: fill;
+  border-radius: 10%; /* For a circular profile picture */
+}

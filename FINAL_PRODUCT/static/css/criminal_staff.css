@@ -1,0 +1,105 @@
+img{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+th,
+td {
+    padding: 12px 15px;
+}
+ tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.table{
+    overflow: scroll;
+    height: 90%;
+}
+
+form{
+    width:50vw;
+    border: 2px solid black;
+    padding:10px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+input {
+    border: 2px solid #000;
+    outline: none;
+    background: none;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    margin:1px 4px;
+    background-color: white;
+  }
+
+/* Base styling for the button */
+.toggle-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Get the element to line up properly */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Some margin */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 12px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background-color */
+}
+
+/* Hover effect */
+.toggle-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Simple refresh icon */
+.toggle-btn::after {
+    margin-left: 8px; /* Space between text and icon */
+    font-size: 18px; /* Adjust icon size */
+}
+
+/* Optional: adding focus outline for accessibility */
+.toggle-btn:focus {
+    outline: 2px solid #45a049; /* Green outline on focus */
+    outline-offset: 2px;
+}
+
+.submit_button{
+    background-color: rgb(0, 140, 255);
+}
+form div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+form label{
+    font-weight: 500;
+    font-size: 1.5vw;
+}
+
+.staffhead{
+    font-size:18px ;
+}
+.criminalhead{
+    font-size: 18px;
+}
+
+/* ****************POPUP MODAL FOR UPDATING THE PROFILE************************ */
+
