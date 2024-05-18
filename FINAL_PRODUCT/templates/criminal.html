@@ -1,0 +1,147 @@
+{% extends 'dashboard.html'%} {%block body%}
+<div class="flashmessage pt-3">
+  {% with messages=get_flashed_messages(with_categories=true) %} {% if messages
+  %} {% for category,message in messages %}
+  <div style="color: red" class="alert alert-{{category}}">{{message}}</div>
+  {% endfor %} {% endif %} {% endwith %}
+</div>
+
+<form action="/criminal/{{username}}" method="post" style="padding:2px; border:1px solid white;border-radius:10px;">
+  <input type="text" placeholder="search" name="query" style="padding: 2px; width: 99%; border: 1px solid #ccc;" />
+</form>
+
+<form id="csvForm" action="/download_csv/{{ username }}" method="post" style="margin:5px; padding:2px; border:1px solid white; border-radius:10px;width:7vw">
+  <input type="hidden" id="csvDataInput" name="csv_data" value="{{ csv_data }}">
+  <button type="submit" style="padding:1px; background-color: white; color: black; border: none; cursor: pointer; border-radius: 5px;">Download CSV</button>
+</form>
+
+<div class="table">
+  <table>
+    <thead class="tablehead">
+      <tr class="criminalhead">
+        <td>Id</td>
+        <td>name</td>
+        <td>Phone</td>
+        <td>Age</td>
+        <td>Gender</td>
+        <td>DOB</td>
+        <td>Jailed</td>
+        <td>Image</td>
+        <td>Address</td>
+        <td>Update</td>
+      </tr>
+    </thead>
+
+    <tbody class="tablebody">
+      {% for item in data%}
+      <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
+        <td>{{item[4]}}</td>
+        <td>{{item[5]}}</td>
+        <td>{{item[6]}}</td>
+        <td>
+          <img class="myImg" src="{{ url_for('serve_uploaded_image', filename=item[7]) }}" alt="" loading="lazy" />
+        </td>
+        <div class="myModal modal"
+          style="display: none; position: fixed; z-index: 1; padding-top: 10%; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.6);">
+          <!-- Modal content -->
+          <div class="modal-content"
+            style="margin: auto; display: block; width:400px; max-height:400px; overflow: auto;background-color:rgba(221, 251, 210, 0.8);">
+            <span class="close" style="color:#6495ed; float:right; font-size: 4vw; font-weight: bold;">&times;</span>
+            <img class="modal-content imgModal" id="img{{item[7]}}"
+              style=" width: 300px;height: 300px;object-fit: contain;">
+          </div>
+        </div>
+        <td>{{item[8]}}</td>
+        <td>
+          <button class="toggle-btn" onclick="openModal('{{item[0]}}')">Update<i class="fa fa-refresh"></i></button>
+        </td>
+
+        <div id="{{item[0]}}" class="updatemodal">
+          <div class="formmodal-content" style="scale:0.7;background-color: #fefefe;margin: 2% auto;padding: 20px;border: 1px solid #888;width: 55%;">
+            <span class="formclose" onclick="closeModal('{{item[0]}}')"><h1>&times;</h1></span>
+            <h3>Update:{{item[0]}} </h3>
+            <form method="POST" class="register-form" id="update-form" action="/updatecriminal/{{username}}/{{item[0]}}"
+        enctype="multipart/form-data" style="width: 60%; margin: auto; padding: 10px; border:none;box-shadow:none; background-color: #f9f9f9; font-family: Arial, sans-serif;">
+
+        <div style="margin-bottom: 10px;">
+            <label for="criminal_name" style="display: block; font-weight: bold; margin-bottom: 3px;">Name</label>
+            <input type="text" name="criminal_name" id="criminal_name" placeholder="criminal name" value='{{item[1]}}' required
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="phone" style="display: block; font-weight: bold; margin-bottom: 3px;">Phone No.</label>
+            <input type="tel" name="phone" id="phone" placeholder="1234567890" pattern='[0-9]{10}' value={{item[2]}}
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="age" style="display: block; font-weight: bold; margin-bottom: 3px;">Age</label>
+            <input type="number" name="age" id="age" value={{item[3]}} required
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="image" style="display: block; font-weight: bold; margin-bottom: 3px;">IMAGE</label>
+            <input type="file" name="image" id="image" accept="image/*"
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+            <span style="font-weight: bold; font-size: 16px; color: #0C92CC;">old file:-{{item[7]}}</span>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="gen" style="display: block; font-weight: bold; margin-bottom: 3px;">Gender</label>
+            <select name="gen" id="gen" value={{item[4]}} required
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                {% for option in gender %}
+                {% if option == item[4] %}
+                <option value="{{ option }}" selected>{{ option }}</option>
+                {% else %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="jailed" style="display: block; font-weight: bold; margin-bottom: 3px;">Jailed</label>
+            <select name="jailed" id="jailed" value={{item[6]}} required
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                {% for option in jailed %}
+                {% if option == item[6] %}
+                <option value="{{ option }}" selected>{{ option }}</option>
+                {% else %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="dob" style="display: block; font-weight: bold; margin-bottom: 3px;">DOB</label>
+            <input type="date" name="dob" id="dob" value={{item[5]}}
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label for="add" style="display: block; font-weight: bold; margin-bottom: 3px;">Address</label>
+            <input type="text" name="add" id="add" placeholder="Address" value='{{item[8]}}' required
+                style="width: 100%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        </div>
+
+        <div>
+            <input class="submit_button" type="submit" required
+                style="width: 100%; padding: 8px; border: none; border-radius: 4px; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer; box-sizing: border-box;" />
+        </div>
+    </form>
+          </div>
+        </div>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{%endblock%}

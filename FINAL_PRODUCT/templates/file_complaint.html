@@ -1,0 +1,131 @@
+{%extends 'dashboard.html'%}
+{%block body%}
+    <h2>Complaint Form</h2>
+    <form action="/file_complaint/{{username}}" method="post">
+        <label for="district_name">District Name:</label>
+        <input type="text" id="district_name" name="district_name" required><br><br>
+        
+        <label for="unit_name">Unit Name:</label>
+        <input type="text" id="unit_name" name="unit_name" required><br><br>
+        
+        <label for="fir_no">FIR No:</label>
+        <input type="number" id="fir_no" name="fir_no" required><br><br>
+        
+        <label for="ri">RI:</label>
+        <input type="number" id="ri" name="ri" required><br><br>
+        
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br><br>
+        
+        <label for="month">Month:</label>
+        <input type="text" id="month" name="month" required><br><br>
+        
+        <label for="offence_from_date">Offence From Date:</label>
+        <input type="datetime-local" id="offence_from_date" name="offence_from_date" required><br><br>
+        
+        <label for="offence_to_date">Offence To Date:</label>
+        <input type="datetime-local" id="offence_to_date" name="offence_to_date" required><br><br>
+        
+        <label for="fir_reg_datetime">FIR Registration Date Time:</label>
+        <input type="datetime-local" id="fir_reg_datetime" name="fir_reg_datetime" required><br><br>
+        
+        <label for="fir_date">FIR Date:</label>
+        <input type="datetime-local" id="fir_date" name="fir_date" required><br><br>
+        
+        <label for="fir_type">FIR Type:</label>
+        <input type="text" id="fir_type" name="fir_type" required><br><br>
+        
+        <label for="fir_stage">FIR Stage:</label>
+        <input type="text" id="fir_stage" name="fir_stage" required><br><br>
+        
+        <label for="complaint_mode">Complaint Mode:</label>
+        <input type="text" id="complaint_mode" name="complaint_mode" required><br><br>
+        
+        <label for="crimegroup_name">Crime Group Name:</label>
+        <input type="text" id="crimegroup_name" name="crimegroup_name" required><br><br>
+        
+        <label for="crimehead_name">Crime Head Name:</label>
+        <input type="text" id="crimehead_name" name="crimehead_name" required><br><br>
+        
+        <label for="latitude">Latitude:</label>
+        <input type="number" id="latitude" name="latitude" step="any" required><br><br>
+        
+        <label for="longitude">Longitude:</label>
+        <input type="number" id="longitude" name="longitude" step="any" required><br><br>
+        
+        <label for="act_section">Act Section:</label>
+        <input type="text" id="act_section" name="act_section" required><br><br>
+        
+        <label for="io_name">IO Name:</label>
+        <input type="text" id="io_name" name="io_name" required><br><br>
+        
+        <label for="kgid">KGID:</label>
+        <input type="number" id="kgid" name="kgid" required><br><br>
+        
+        <label for="ioassigned_date">IO Assigned Date:</label>
+        <input type="datetime-local" id="ioassigned_date" name="ioassigned_date"><br><br>
+        
+        <label for="internal_io">Internal IO:</label>
+        <input type="number" id="internal_io" name="internal_io" required><br><br>
+        
+        <label for="place_of_offence">Place of Offence:</label>
+        <input type="text" id="place_of_offence" name="place_of_offence" required><br><br>
+        
+        <label for="distance_from_ps">Distance from PS:</label>
+        <input type="text" id="distance_from_ps" name="distance_from_ps" required><br><br>
+        
+        <label for="beat_name">Beat Name:</label>
+        <input type="text" id="beat_name" name="beat_name" required><br><br>
+        
+        <label for="village_area_name">Village Area Name:</label>
+        <input type="text" id="village_area_name" name="village_area_name" required><br><br>
+        
+        <label for="male">Male:</label>
+        <input type="number" id="male" name="male" required><br><br>
+        
+        <label for="female">Female:</label>
+        <input type="number" id="female" name="female" required><br><br>
+        
+        <label for="boy">Boy:</label>
+        <input type="number" id="boy" name="boy" required><br><br>
+        
+        <label for="girl">Girl:</label>
+        <input type="number" id="girl" name="girl" required><br><br>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        
+        <label for="victim_count">Victim Count:</label>
+        <input type="number" id="victim_count" name="victim_count" required><br><br>
+        
+        <label for="accused_count">Accused Count:</label>
+        <input type="number" id="accused_count" name="accused_count" required><br><br>
+        
+        <label for="arrested_male">Arrested Male:</label>
+        <input type="number" id="arrested_male" name="arrested_male" required><br><br>
+        
+        <label for="arrested_female">Arrested Female:</label>
+        <input type="number" id="arrested_female" name="arrested_female" required><br><br>
+        
+        <label for="arrested_count_no">Arrested Count No:</label>
+        <input type="number" id="arrested_count_no" name="arrested_count_no" required><br><br>
+        
+        <label for="accused_chargesheeted_count">Accused Chargesheeted Count:</label>
+        <input type="number" id="accused_chargesheeted_count" name="accused_chargesheeted_count" required><br><br>
+        
+        <label for="conviction_count">Conviction Count:</label>
+        <input type="number" id="conviction_count" name="conviction_count" required><br><br>
+        
+        <label for="fir_id">FIR ID:</label>
+        <input type="text" id="fir_id" name="fir_id" required><br><br>
+        
+        <label for="unit_id">Unit ID:</label>
+        <input type="text" id="unit_id" name="unit_id" required><br><br>
+        
+        <label for="crime_no">Crime No:</label>
+        <input type="number" id="crime_no" name="crime_no" required><br><br>
+        
+        <div>
+        <input class="submit_button" type="submit" value="Submit"></div>
+    </form>
+{%endblock%}

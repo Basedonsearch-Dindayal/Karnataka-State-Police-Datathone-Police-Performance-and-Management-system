@@ -1,0 +1,59 @@
+{% extends 'dashboard.html'%}
+{%block body%}
+<form class="add_staff" method="post" action="/add_staff/{{username}}" enctype="multipart/form-data">
+    <div><label for="staff_id">ID</label>
+    <input type="text" name="staff_id" id="staff_id" placeholder="22BCE10707" required/></div>
+
+    <div><label for="staff_name">Name</label>
+    <input type="text" name="staff_name" id="staff_name" placeholder="staff name"  required/></div>
+
+    <div><label for="pw">Password</label>
+    <input type="password" name="pw" id="pw" required/></div>
+
+    <div><label for="email">E-mail</label>
+    <input type="" name="email" id="email" placeholder="abc@pqr.com"  required/></div>
+
+    <div><label for="phone">Phone No.</label>
+    <input type="tel" name="phone" id="phone" placeholder="1234567890" pattern='[0-9]{10}' required/></div>
+
+    <div><label for="age">Age</label>
+    <input type="number" name="age" id="age" required/></div>
+
+    <div><label for="image">IMAGE</label>
+    <input type="file" name="image" id="image" accept="image/*"  required/>
+   </div> <!--accept is used to specify that only images accepted with gif and jpg datatype * means all-->
+
+    <div><label for="gen">Gender</label>
+    <select  name="gen" id="gen"   required/>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+    </select></div>
+
+    <div><label for="dob">DOB</label>
+    <input type="date" name="dob" id="dob" required/></div>
+
+    <div><label for="jd">Joining Date</label>
+    <input type="date" name="jd" id="jd" required/></div>
+
+    <div><label for="branch">Branch</label>
+    <input type="text" name="branch" id="branch" placeholder="branch name"  required/></div>
+
+    <div><label for="desig">Designation</label>
+    <input type="text" name="desig" id="desig" placeholder="Designation"  required/></div>
+
+    <div><label for="add">Address</label>
+    <input type="text" name="add" id="add" placeholder="Address"  required/></div>
+
+    <div><label for="sec">Retired/Suspended/working</label>
+    <select  name="sec" id="sec"   required/>
+        <option value="wor">Working</option>
+        <option value="ret">Retired</option>
+        <option value="sus">Suspended</option>
+    </select></div>
+    
+    <div >
+        <input class="submit_button" type="submit"  required/>
+    </div>
+</form>
+{%endblock%}

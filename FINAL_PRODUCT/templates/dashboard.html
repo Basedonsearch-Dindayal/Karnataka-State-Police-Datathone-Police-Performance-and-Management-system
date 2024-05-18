@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Karnataka State Police Portal</title>
+      <link rel="stylesheet" href="style.css" />
+      <!-- Font Awesome Cdn Link -->
+      <link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='css/criminal_staff.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='css/analytical.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='css/navigation.css')}}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+      <!-- highchart -->
+      <script src="https://code.highcharts.com/stock/highstock.js"></script>
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    </head>
+    <body>
+      <header class="header">
+        <div class="logo">
+          <a href="#">Police Management system</a>
+        </div>
+    
+        <div class="header-icons">
+          <div class="account">
+            <h4>{{username}}</h4>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <nav>
+          <div class="side_navbar">
+            <a href="/home/{{username}}">Home</a>
+            <a href="/navigation_details/{{username}}">Navigation Details</a>
+            <a href="/file_complaint/{{username}}">File Complaint</a>
+            <a href="/staff/{{username}}">Staff details</a>
+            <a href="/criminal/{{username}}">Criminal Details</a>
+            <a href="/analytical_dashboard/{{username}}">Analytical board</a>
+            <a href="/add_staff/{{username}}">Add staff</a>
+            <a href="/add_criminal/{{username}}">Add Criminals</a>
+            <a onclick="popupAlert()" href="/logout">Logout</a>
+          </div>
+        </nav>
+    
+        <div class="main-body">
+            {%block body%}
+            {%endblock%}
+        </div>
+      </div>
+      <script src="{{url_for('static', filename='js/navigation.js')}}"></script>
+      <script src="{{url_for('static', filename='js/home.js')}}"></script>
+      <script>
+        function popupAlert() {
+          alert("Thankyou, Happy to help you");
+        }
+      </script>      
+    </body>
+    </html>

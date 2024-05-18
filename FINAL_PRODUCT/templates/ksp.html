@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka State Police Portal</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/ksp.css')}}">
+</head>
+<body>
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="/" class="nav__logo">Karnataka State Police Portal</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <div class="nav__close">
+                    <ion-icon name="close-outline" class="nav__close-icon" id="nav-close"></ion-icon>
+                </div>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="/stafflogin" class="nav__link">Staff Login</a></li>
+                    <li class="nav__item"><a href="/public_login" class="nav__link">Public Login</a></li>
+                    <li class="nav__item"><a href="/public_signup" class="nav__link">Public Signup</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main bd-grid">
+        <div class="home">
+            <h1 class="home__title">KARNATAKA<br> STATE<br> POLICE</h1>
+            <h2 class="home__subtitle">EMERGENCY CALL<br>STAFF PANEL<br>FILE COMPLAINT</h2>
+
+
+        </div>
+    </main>
+</body>
+</html>

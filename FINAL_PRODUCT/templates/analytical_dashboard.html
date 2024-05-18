@@ -1,0 +1,391 @@
+{% extends 'dashboard.html'%} {%block body%}
+<div class="flashmessage pt-3">
+  {% with messages=get_flashed_messages(with_categories=true) %} {% if messages
+  %} {% for category,message in messages %}
+  <div style="color: red" class="alert alert-{{category}}">{{message}}</div>
+  {% endfor %} {% endif %} {% endwith %}
+</div>
+
+<a>
+  <h3>{{datalength}} DATA</h3>
+</a>
+
+<form action="/analytical_dashboard/{{username}}" method="post" style="padding:2px; border:1px solid white;border-radius:10px;">
+  <input type="search" placeholder="search" name="query" style="padding: 2px; width: 99%; border: 1px solid #ccc;" />
+</form>
+<form id="csvForm" action="/download_csv/{{ username }}" method="post" style="margin:5px; padding:2px; border:1px solid white; border-radius:10px;width:7vw">
+  <input type="hidden" id="csvDataInput" name="csv_data" value="{{ csv_data }}">
+  <button type="submit" style="padding:1px; background-color: white; color: black; border: none; cursor: pointer; border-radius: 5px;" >Download CSV</button>
+</form>
+
+<div class="heading-top">Pie Representation</div>
+<div class="piechartsdiv">
+  <div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+      <div class="card-body">
+        <div class="chart-container" style="height: 1000px; width: 1000px">
+          <canvas id="graph1"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<div class="heading-top">Bar Representation</div>
+<div class="barchart">
+  <div class="col-xs-10 col-sm-6 col-md-6">
+    <div class="card card-style mb-2">
+      <div class="card-body">
+        <div class="chart-container" style="height: 1000px; width: 100%">
+          <canvas id="graph2"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<div class="heading-top">Static Representation</div>
+<div class="col-xs-10 col-sm-6 col-md-6">
+  <div class="card card-style mb-2">
+    <div class="card-body">
+      <div class="chart-container" style="height: 500px; width: 1000px">
+        <canvas id="line_graph_year"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+<div class="heading-top">Candle Representation</div>
+<div class="jumbotron">
+  <div id="container" class="chart" style="height: 100vh;"></div>
+</div>
+
+<br><br>
+<div class="heading-top">Highlighted Area Map</div>
+{{ htmlmap|safe }}
+
+<br><br>
+<div class="heading-top">All FIR Data</div>
+<div class="table">
+  <table>
+    <thead style="display:float"class="tablehead">
+      <tr>
+        <th>District_Name</th>
+        <th>UnitName</th>
+        <th>FIRNo</th>
+        <th>RI</th>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Offence_From_Date</th>
+        <th>Offence_To_Date</th>
+        <th>FIR_Reg_DateTime</th>
+        <th>FIR_Date</th>
+        <th>FIR_Type</th>
+        <th>FIR_Stage</th>
+        <th>Complaint_Mode</th>
+        <th>CrimeGroup_Name</th>
+        <th>CrimeHead_Name</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>ActSection</th>
+        <th>IOName</th>
+        <th>KGID</th>
+        <th>IOAssigned_Date</th>
+        <th>Internal_IO</th>
+        <th>Place_of_Offence</th>
+        <th>Distance_from_PS</th>
+        <th>Beat_Name</th>
+        <th>Village_Area_Name</th>
+        <th>Male</th>
+        <th>Female</th>
+        <th>Boy</th>
+        <th>Girl</th>
+        <th>Age</th>
+        <th>Victim_Count</th>
+        <th>Accused_Count</th>
+        <th>Arrested_Male</th>
+        <th>Arrested_Female</th>
+        <th>Arrested_Count_No</th>
+        <th>Accused_ChargeSheeted_Count</th>
+        <th>Conviction_Count</th>
+        <th>FIR_ID</th>
+        <th>Unit_ID</th>
+        <th>Crime_No</th>
+      </tr>
+    </thead>
+    <tbody class="tablebody">
+      {% for complaint in data %}
+      <tr>
+        <td>{{complaint[0]}}</td>
+        <td>{{complaint[1]}}</td>
+        <td>{{complaint[2]}}</td>
+        <td>{{complaint[3]}}</td>
+        <td>{{complaint[4]}}</td>
+        <td>{{complaint[5]}}</td>
+        <td>{{complaint[6]}}</td>
+        <td>{{complaint[7]}}</td>
+        <td>{{complaint[8]}}</td>
+        <td>{{complaint[9]}}</td>
+        <td>{{complaint[10]}}</td>
+        <td>{{complaint[11]}}</td>
+        <td>{{complaint[12]}}</td>
+        <td>{{complaint[13]}}</td>
+        <td>{{complaint[14]}}</td>
+        <td>{{complaint[15]}}</td>
+        <td>{{complaint[16]}}</td>
+        <td>{{complaint[17]}}</td>
+        <td>{{complaint[18]}}</td>
+        <td>{{complaint[19]}}</td>
+        <td>{{complaint[20]}}</td>
+        <td>{{complaint[21]}}</td>
+        <td>{{complaint[22]}}</td>
+        <td>{{complaint[23]}}</td>
+        <td>{{complaint[24]}}</td>
+        <td>{{complaint[25]}}</td>
+        <td>{{complaint[26]}}</td>
+        <td>{{complaint[27]}}</td>
+        <td>{{complaint[28]}}</td>
+        <td>{{complaint[29]}}</td>
+        <td>{{complaint[30]}}</td>
+        <td>{{complaint[31]}}</td>
+        <td>{{complaint[32]}}</td>
+        <td>{{complaint[33]}}</td>
+        <td>{{complaint[34]}}</td>
+        <td>{{complaint[35]}}</td>
+        <td>{{complaint[36]}}</td>
+        <td>{{complaint[37]}}</td>
+        <td>{{complaint[38]}}</td>
+        <td>{{complaint[39]}}</td>
+        <td>{{complaint[40]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  var dist = {{ district | tojson }};
+  var dist_mod = {{ district_mod | tojson }};
+  let graph1_chart = new Chart(graph1, {
+    type: 'pie',
+    data: {
+      labels: dist,
+      datasets: [{
+        label: "Red Zones All Time",
+        data: dist_mod,
+        backgroundColor: ['#5DA5DA ', '#FAA43A', '#60BD68',
+          '#B276B2', '#E16851', '#FB8267'],
+
+        borderWidth: 1,
+        hoverBorderColor: "black",
+        hoverBorderWidth: 2,
+        hoverBackgroundColor: 'rgba(154, 245, 140)',
+        pointHoverRadius: 6
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Red Zones All Time",
+        fontSize: 20,
+      },
+      legend: {
+        position: "right",
+        labels: {
+          fontColor: "gray"
+        },
+        display: true,
+      },
+
+      elements: {
+        hitRadius: 3,
+      }
+    }
+  });
+
+
+
+  let graph2_chart = new Chart(graph2, {
+    type: 'bar',
+    data: {
+      labels: dist,
+      datasets: [{
+        barPercentage: 1,
+        barThickness: 6,
+        maxBarThickness: 8,
+        minBarLength: 2,
+        data: dist_mod,
+        backgroundColor: ['#5DA5DA ', '#FAA43A', '#60BD68',
+          '#B276B2', '#E16851', '#FB8267'],
+
+        borderWidth: 1,
+        hoverBorderColor: "black",
+        hoverBorderWidth: 2,
+        hoverBackgroundColor: 'rgba(154, 245, 140)',
+        pointHoverRadius: 6
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Red Zones All Time",
+        fontSize: 20,
+      },
+      legend: {
+        position: "right",
+        labels: {
+          fontColor: "gray"
+        },
+        display: true,
+      },
+
+      elements: {
+        hitRadius: 3,
+      }
+    }
+  });
+
+
+
+  var redzone_dist = {{ redzones | tojson }};
+
+  // Extracting years from the redzone_dist object
+  var years = Object.keys(redzone_dist[Object.keys(redzone_dist)[0]]);
+
+  // Define datasets array
+  var datasets = [];
+
+  // Define an array of colors for the curves
+  var colors = ['#7MB7DA', '#FF5733', '#66FF99', '#FFD700', '#C0C0C0', '#800000', '#008080', '#FF4500', '#00FF00', '#4682B4', '#191970'];
+
+  // Iterate over each key (district) in redzone_dist
+  var colorIndex = 0; // Index for accessing colors array
+  for (var district_name in redzone_dist) {
+    // Extract FIR counts for the current district
+    var fir_counts = redzone_dist[district_name];
+
+    // Create a new dataset object for the current district
+    var district_dataset = {
+      label: district_name,
+      data: fir_counts,
+      backgroundColor: colors[colorIndex], // Assign a color from the colors array
+      borderWidth: 4,
+      hoverBorderColor: "black",
+      hoverBorderWidth: 2,
+      hoverBackgroundColor: 'rgba(154, 245, 140)',
+      pointHoverRadius: 6
+    };
+
+    // Push the dataset object to the datasets array
+    datasets.push(district_dataset);
+
+    // Increment the colorIndex to get the next color from the array
+    colorIndex = (colorIndex + 1) % colors.length;
+  }
+
+  // Create a new Chart instance using the years as labels and datasets array
+  var linegraph_chart = new Chart(line_graph_year, {
+    type: 'line',
+    data: {
+      labels: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+      datasets: datasets
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Red Zones Year Wise",
+        fontSize: 20
+      },
+      legend: {
+        position: "left",
+        labels: {
+          fontColor: "gray"
+        },
+        display: true
+      },
+      elements: {
+        hitRadius: 3
+      }
+    }
+  });
+
+
+  // highchart 
+   var data={{series_data | tojson}}
+
+   // Configure the chart using the processed data
+        // Convert data to Highcharts format
+        var seriesData = data.map(function (series) {
+            return {
+                name: series.name,
+                data: series.data.map(function (point) {
+                    // Split year-month string and create Date object
+                    var yearMonth = point[0].split('-');
+                    var date = new Date(parseInt(yearMonth[0]), parseInt(yearMonth[1]) - 1);
+                    return [date.getTime(), point[1]]; // Use milliseconds for x value
+                })
+            };
+        });
+
+        // Configure and render the Highcharts graph with annotations and drawing tool
+        Highcharts.stockChart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Crimes Solved by Inspector in Each Month'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    month: '%Y-%m'
+                },
+                title: {
+                    text: 'Year-Month'
+                },
+                pointStart: Date.UTC(2016, 0),
+                pointInterval: 30 * 24 * 3600 * 1000
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of Crimes Solved'
+                },
+                stackLabels: {
+                    enabled: true
+                }
+            },
+            tooltip: {
+                xDateFormat: '%Y-%m',
+                headerFormat: '<b>{point.key}</b><br/>',
+                pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            },
+            series: seriesData,
+            legend: {
+                enabled: true,
+                align: 'center',
+                verticalAlign: 'bottom',
+                layout: 'horizontal'
+            },
+            accessibility: {
+                enabled: true
+            }
+        });
+
+
+
+
+</script>
+{%endblock%}

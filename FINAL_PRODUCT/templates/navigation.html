@@ -1,0 +1,41 @@
+{%extends "dashboard.html"%}
+{%block body%}
+<table>
+    <thead class="tablehead">
+      <tr>
+        <td>Aadhar</td>
+        <td>Time</td>
+        <td>Latitude</td>
+        <td>Longitude</td>
+        <td>Map</td>
+      </tr>
+    </thead>
+  
+    <tbody class="tablebody">
+      {% for item in data%}
+      <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
+        <td>
+          <!-- Button to Open the Modal -->
+          <button class="myBtn">Open Map</button>
+  
+          <!-- The Modal -->
+          <div class="myModal modal">
+  
+              <!-- Modal content -->
+              <div class="modal-content">
+                  <span class="close">×</span>
+                  <span class="Tag"><h3>LOCATION</h3></span>
+                  <iframe src="https://www.google.com/maps?q={{item[2]}},{{item[3]}}&hl=es;z=14&output=embed" style="width:1185px;height:400px;border:2px solid black;"></iframe>
+              </div>
+  
+          </div>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{%endblock%}

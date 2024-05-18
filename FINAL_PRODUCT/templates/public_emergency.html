@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka State Police Portal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <link rel="stylesheet" href="{{url_for('static',filename='css/public.css')}}">
+</head>
+<body>
+
+    <div class='header-login1'>
+        <div class="header-nav-list">
+          <img src="https://police.gov.in/themes/policeofindia/images/indian-flag.png">
+          <p>भारत सरकार</p>
+          <p> | </p>
+          <p>Government of India</p>
+        </div>  
+    </div>
+  
+    <div class='header-login2'>
+        <img src="https://police.gov.in/themes/policeofindia/images/logo.png">
+    </div>
+  
+    <div class='header-login3'></div>
+    <div class="sos-button">
+        <h1 style="font-size: 3.2vw;color:black;">Aadhaar no :{{username}}</h1>
+        <div class="status">
+            <button class="findlocation">SOS</button>
+        </div>
+        <br><br>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <script>
+        const username="{{username}}";
+        const findmylocation = () => {
+            const status = document.querySelector('.status');
+            const success = (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                sendData(latitude, longitude); // Call sendData function with latitude and longitude
+                status.textContent = "Location sent";
+            }
+
+            const error = () => {
+                status.textContent = "Didn't send your location";
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+
+        const sendData = (latitude, longitude) => {
+            $.ajax({
+                url: `/public_emergency/${username}`,
+                type: 'POST',
+                data: { 'lg': longitude, 'lt': latitude },
+                success: function(response) {
+                    console.log(response); // Log response from Flask
+                },
+                error: function(xhr, status, error) {
+                    console.error(error); // Log any errors
+                }
+            });
+        }
+
+        document.querySelector('.findlocation').addEventListener('click', findmylocation);
+    </script>    
+</body>
+</html>

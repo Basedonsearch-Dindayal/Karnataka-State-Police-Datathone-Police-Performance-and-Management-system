@@ -1,0 +1,71 @@
+{% extends 'dashboard.html'%}
+{%block body%}
+<div class='flashmessage pt-3'>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category,message in messages %}
+          <div style="color:red;"class='alert alert-{{category}}'>{{message}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+
+<div class="profile-container">
+  <img class="profile-picture" src="{{ url_for('serve_uploaded_image', filename=data[12]) }}" alt="Profile Picture">
+</div>
+
+<div class="profile">
+    <table>
+    <tr>
+      <th>ID</th>
+      <td>{{data[0]}}</td>
+    </tr>
+    <tr>
+      <th>NAME</th>
+      <td>{{data[1]}}</td>
+    </tr>
+    <tr>
+      <th>DESIGNATION</th>
+      <td>{{data[10]}}</td>
+    </tr>
+    <tr>
+      <th>EMAIL</th>
+      <td>{{data[3]}}</td>
+    </tr>
+    <tr>
+      <th>PHONE NUMBER</th>
+      <td>{{data[4]}}</td>
+    </tr>
+    <tr>
+      <th>AGE</th>
+      <td>{{data[5]}}</td>
+    </tr>
+    <tr>
+      <th>GENDER</th>
+      <td>{{data[6]}}</td>
+    </tr>
+    <tr>
+      <th>DOB TIMESTAMP</th>
+      <td>{{data[7]}}</td>
+    </tr>
+    <tr>
+      <th>JOINING DATE</th>
+      <td>{{data[8]}}</td> 
+    </tr>
+    <tr>
+      <th>BRANCH</th>
+      <td>{{data[9]}}</td>
+    </tr>
+    <tr>
+      <th>RETIRED/SUSPENDED</th>
+      <td>{{data[11]}}</td>
+    </tr>
+    <tr>
+      <th>ADDRESS</th>
+      <td>{{data[13]}}</td>
+    </tr>
+    <tr>
+  </table>
+</div>
+
+{%endblock%}
