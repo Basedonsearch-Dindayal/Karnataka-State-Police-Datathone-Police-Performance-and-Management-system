@@ -5,6 +5,7 @@ Website link : https://ksp-by-matrix.vercel.app/
 # Team
 <h3>Nirmit Pratap Singh</h3>
 <h3>Dindayal Sinha</h3>
+<h3>Pallav Rai</h3>
 <h3>Tanishq Kakkar</h3>
 <h3>Ayush Singh</h3>
 <h1>Prototype Phase</h1>
